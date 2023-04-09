@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="cdn::cdn">
+<meta charset="ISO-8859-1">
+<title>FeedBack</title>
+</head>
+
+<body>
+	<div th:include="navbar::nav"></div>
+	<div class="container-fluid py-5">
+		
+		<div class="row">
+			<div class="col-md-4 offset-md-4">
+				<div class="card">
+					<div class="card-header text-center text-white">
+						<i class="fa fa-sign-in fa-3x" aria-hidden="true"></i>
+						<h4>FeedBack Form</h4>
+					</div>
+				
+					<div class="alert alert-danger" role="alert"></div>
+				
+					<div class="card-body">
+					
+						<form method="post" action="feedbackform">
+						
+						<div class="form-group">
+								<label for="FullName">Name</label> <input type="FullName"
+									class="form-control" id="FullName" placeholder="FullName"
+									name="FullName" required="true">
+							</div>
+						
+							<div class="form-group">
+								<label for="email">Email address</label> <input type="email"
+									class="form-control" id="email" aria-describedby="emailHelp"
+									placeholder="Enter Email" name="email" required="true">
+							</div>
+							
+							<div class="form-group">
+								<label for="comments">comments</label> <input type="comments"
+									class="form-control" id="comments" placeholder="comments"
+									name="comments" required="true">
+							</div>
+							
+							
+							
+							<button type="submit"
+								class="btn btn-success btn-block w-50 mx-auto mt-3">
+								<i class="fa fa-sign-in" aria-hidden="true"></i>submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+					
+	
+	<div th:if=${session.msg}>
+	<div class="alert alert-success" role="alert" th:text="${session.msg}">
+  </div>
+<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+</div>
+   
+   
+
+</body>
+</html>

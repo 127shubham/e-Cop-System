@@ -1,0 +1,92 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Mulish', sans-serif;
+}
+
+body {
+	height: 100vh;
+}
+
+nav.navbar {
+	background-color: #0c093c;
+	color: #fff;
+	padding: 15px 20px;
+}
+
+.nav-link {
+	margin: 0 7px;
+	border: 1px solid #ff80ff;
+	padding: 0;
+	border-radius: 25px;
+	padding: 0 10px;
+}
+
+.nav-link:hover {
+	font-weight: bold;
+}
+
+.mainheading {
+	font-weight: bold;
+}
+
+.homediv {
+	height: 300px;
+	margin: 26px auto;
+}
+
+.herodiv {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 300px;
+	padding: 26px auto;
+	flex-direction: column;
+}
+
+.homeImg {
+	height: 300px;
+	margin-top: 80px;
+	z-index: -1;
+}
+
+.herotext {
+	text-align: center;
+}
+
+a.complaintbtn.mt-5 {
+	padding: 8px 25px;
+	font-size: 20px;
+	font-weight: 500;
+	background-color: #0c093c;
+	color: #fff;
+	border-radius: 50px;
+	border: 2px solid #ff80ff;
+	box-shadow: 2px 2px 2px #3a3a3a;
+}
+
+.container-fluid.py-5 {
+	margin: 10px 0px;
+	background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%,
+		rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+	position: absolute;
+	top: 62px;
+}
+
+.card-header.text-center.text-white {
+	background-color: #0c093c;
+}
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: red;
+	color: white;
+	text-align: center;
+}

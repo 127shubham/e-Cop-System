@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head th:include="cdn::cdn">
+<meta charset="ISO-8859-1">
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+		<div th:include="navbar::nav" ></div>
+		<div th:if=${session.msg}>
+		</div>
+	<div class="container-fluid-py-5">
+		<h1 class="mainheading m-3 text-center">Permission Status</h1>
+	</div>
+	
+							 <div class="card-header text-center text-white">
+								<i class="fa fa-tasks fa-3x" aria-hidden="true"></i>
+								<h4>Permission Status</h4>
+							</div>
+
+	<div class="table-responsive-sm mx-5 table-hover">
+		<table class="table  table-bordered" id="table">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Subject</th>
+					<th scope="col">Type</th>
+					<th scope="col">Permission To</th>
+					<th scope="col">Location</th>
+					<th scope="col">Permission Description</th>
+					<th scope="col">Date</th>
+					<th scope="col">Status</th>
+					<th scope="col">Action</th>
+					
+					<th th:if="${session.User.role}=='Admin'"> Change Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr th:each="P: ${permission}" >
+					<th th:text="${P.id}">1</th>
+					<td th:text="${P.requestfor}"></td>
+					<td th:text="${P.requesttype}"></td>
+					<td th:text="${P.requestto}"></td>
+					<td th:text="${P.location}"></td>
+					<td th:text="${P.description}"></td>
+					<td th:text="${P.reqdate}"></td>
+					 <td th:text="${P.status}"></td>
+					 <td><a class="btn btn-sm btn-primary" th:href="@{Permission/edit/{id}(id=${P.id})}">Edit</a>
+					 <a class="btn btn-sm btn-danger" th:href="@{/Permission/{id}(id=${P.id})}">Delete</a></td>
+					 <td th:if="${session.User.role}=='Admin'"><form action="UpdateStatus" method="post"><select class="custom-select"
+											name="status" id="role" required="true">
+											<option selected>select</option>
+											<option value="Approved">Approved</option>
+											<option value="Denied">Denied</option>
+											</select>
+											<input type="hidden"
+											class="form-control" id="phone" 
+												 name="id" th:value="${P.id}"
+>
+											
+											<button type="submit"  class="btn btn-primary mb-2">Update</button>
+					 
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	
+</body>
+</html>

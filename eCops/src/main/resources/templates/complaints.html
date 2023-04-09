@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="cdn::cdn">
+<head>
+<meta charset="ISO-8859-1">
+<title>Complaints</title>
+
+
+</head>
+<body>
+	<div th:include="navbar::nav"></div>
+	<div class="container">
+			<div class="row1 text-center">
+			
+			<div th:if="${session.message}"
+					th:classappend="${session.message}" class="alert alert-success h-auto d-inline-block text-center"
+					role="alert">
+					
+					<p th:text="${session.message}"></p>
+					<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+				 </div>
+			<h1>COMPLAINTS</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-5">
+
+				<a th:href="@{/addComplaint}" class="btn btn-primary btn-sm mb-3">Add
+					Complaint</a>
+
+			</div>
+		</div>
+		<table class="table table-striped table-bordered">
+			<thead class="table-dark">
+				<tr>
+					<th>ID</th>
+					<th>Subject</th>
+					<th>Type of Complaint</th>
+					<th>Police Station</th>
+					<th>Description</th>
+					<th>Location</th>
+					<th>Upload File(if any)</th>
+					<th>Actions</th>
+					<th>Edit</th>
+					<th th:if="${session.User.role}=='Admin'"> Change Status</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="comp : ${complaint}">
+					<td th:text="${comp.id}"></td>
+					<td th:text="${comp.subject}"></td>
+					<td th:text="${comp.complainttype}"></td>
+					<td th:text="${comp.policestation}"></td>
+					<td th:text="${comp.description}"></td>
+					<td th:text="${comp.location}"></td>
+					<td th:text="${comp.uploaddoc}"></td>
+					<td th:text="${comp.Status}"></td>
+					
+					<!-- <td><a  class="btn btn-primary">Edit</a></br>
+<a  class="btn btn-danger">Delete</a></td> -->
+
+					<td><a class="btn btn-primary "
+						th:href="@{/edit/{id}(id=${comp.id})}"> <i
+							class="fa fa-pencil" aria-hidden="true"></i>
+					</a> <a class="btn btn-danger" th:if="${session.User.role}=='Admin'"
+						th:href="@{/complaints/{id}(id=${comp.id})}"> <i
+							class="fa fa-trash" aria-hidden="true"></i>
+					</a></td>
+					<td th:if="${session.User.role}=='Admin'"><form action="Update" method="post"><select class="custom-select"
+											name="status" id="role" required="true">
+											<option selected>select</option>
+											<option value="Action Taken">Action Taken</option>
+											<option value="Rejected">Rejected</option>
+											</select>
+											<input type="hidden"
+											class="form-control" id="phone" 
+												 name="id" th:value="${comp.id}"
+>
+											
+											<button type="submit"  class="btn btn-primary mb-2">Update</button>
+										</form>
+					</td>
+				</tr>
+
+			</tbody>
+
+
+		</table>
+
+	</div>
+
+</body>
+</html>

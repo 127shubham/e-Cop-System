@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="cdn::cdn">
+<meta charset="ISO-8859-1">
+<title>login</title>
+</head>
+<script src="js/loginValidation.js"></script>
+<body>
+<div th:include="navbar::nav" ></div>
+	 
+		<div class="container-fluid py-5">
+		
+		
+		<div class="row">
+			<div class="col-md-4 offset-md-4">
+				<div class="card">
+					<div class="card-header text-center text-white">
+						<i class="fa fa-sign-in fa-3x" aria-hidden="true"></i>
+						<h4>Log In</h4>
+					</div>
+					<div th:if="${session.message}"
+					th:classappend="${session.message}" class="alert alert-success h-auto d-inline-block text-center"
+					role="alert">
+					
+					<p th:text="${session.message}"></p>
+					<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+				 </div>
+					 	
+					<div class="card-body">
+						<form method="post" action="login">
+							<div class="form-group">
+								<label for="email">Email address</label> <input type="email"
+									class="form-control" id="email" aria-describedby="emailHelp"
+									placeholder="Enter Email" name="email" required="true">
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label> <input type="password"
+									class="form-control" id="password" placeholder="Enter Password"
+									name="password" required="true">
+							</div>
+							<!-- <div class="text-centre">
+							<button type="submit"
+								class="btn btn-success btn-block w-50 ml-5 mt-1 ">
+								<i class="fa fa-sign-in" aria-hidden="true"></i> Log In
+							</button>
+							</div> -->
+							<div class="text-center">
+     							 <button type="submit" class="btn btn-success bt-block"><i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>login</button>
+    						</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</script>
+	
+</body>
+</html>

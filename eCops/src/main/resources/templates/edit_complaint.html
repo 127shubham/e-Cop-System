@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="cdn::cdn">
+	<meta charset="ISO-8859-1">
+	<title></title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+<div th:include="navbar::nav" ></div>
+
+	<div class="container-fluid py-5">
+	<form th:action="@{/complaints/{id} (id=${complaint.id})}" th:object="${complaint}" method="POST">
+	
+		<div class="container mt-1">
+			<div class="row">
+			
+				<div class="col-md-10 offset-md-1">
+					<div class="card mb-5">
+						<div class="card-header text-center text-white">
+							<i class="fa fa-tasks fa-3x" aria-hidden="true"></i>
+							<h4>Edit Complaint</h4>
+						</div>
+						<div class="card-body">
+						
+								<div class="row">
+									<div class="col">
+										<div class="form-group">
+											<label for="subject">Subject</label> <input type="text"
+												class="form-control" id="
+											subject"
+												aria-describedby="subjectHelp" placeholder="Enter Subject"
+												name="subject" th:field="*{subject}"required="true">
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-group">
+											<label for="complainttype">Complaint Type</label> <select
+												class="custom-select" name="complainttype" th:field="*{complainttype}"
+												id="complainttype" required="true">
+												<option value="Select Complaint Type">Select Complaint Type</option>
+												<option value="Matrimonial disputes/family disputes">Matrimonial disputes/family disputes</option>
+												<option value="Corruption cases">Corruption cases</option>
+												<option value="Murder Cases">Murder Cases</option>
+												<option value="Kidnapping">Kidnapping</option>
+												<option value="Others">Others</option>
+												
+											
+											</select>
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-group">
+											<label for="policestation">Police Department</label> <select
+												class="custom-select" name="policestation" th:field="*{policestation}" id="policestation"
+												required="true">
+												<option value="Select Police Station">Select Police Station</option>
+												<option value="Devmali Police Station">Devmali Police Station</option>
+												<option value="Achalpur Police Station">Achalpur Police Station</option>
+												<option value="Rajapeth Police Station">Rajapeth Police Station</option>
+												<option value="Anjangaon Police Station">Anjangaon Police Station</option>
+												<option value="Kholapur Police Station">Kholapur Police Station</option>
+												
+															
+												
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="exampleFormControlTextarea1">Description</label>
+									<textarea class="form-control" id="description" rows="3"
+										require="true" name="description" th:field="*{description}"></textarea>
+								</div>
+
+								<div class="row">
+									<div class="col">
+										<div class="form-group">
+											<label for="subject">Location</label> <input type="text"
+												class="form-control" id="location"
+												aria-describedby="subjectHelp" placeholder="Enter Location"
+												name="location"  th:field="*{location}"required="true">
+										</div>
+									</div>
+									<div class="col">
+										<label for="subject">Upload Documents (jpeg, pdf)</label>
+										<div class="custom-file">
+											<input type="file" class="custom-file-input" id="customFile">
+											<label class="custom-file-label" for="customFile">Choose
+												file</label>
+										</div>
+									</div>
+								</div>
+								<button type="submit"
+									class="btn btn-primary btn-block w-25 mx-auto mt-3">
+									<i class="fa fa-check-square" aria-hidden="true"></i> Submit
+								</button>
+								</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</form>
+	</div>
+	
+</div>
+</body>
+
+</html>

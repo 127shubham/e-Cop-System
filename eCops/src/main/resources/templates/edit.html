@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head th:include="cdn::cdn">
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Update</title>
+</head>
+<body>
+			<div th:include="navbar::nav" ></div>
+<!-- Permission Form -->
+		<div class="container-fluid py-5">
+			<div class="container mt-5">
+				<div class="row">
+					<div class="col-md-10 offset-md-1">
+						<div class="card mb-5">
+							<div class="card-header text-center text-black">
+								<i class="fa fa-tasks fa-3x" aria-hidden="true"></i>
+								<h4>Update Permission Request</h4>
+							</div>
+							<div class="card-body">
+							<form th:action="@{/Permission/{id} (id=${Permission.id})}" th:object="${Permission}" method="POST">
+							<input type="hidden"  th:value="${Permission.id}" name="id">
+								<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="subject">Permission for</label> <input
+													type="text" class="form-control" id="
+											subject"
+													aria-describedby="subjectHelp"
+													placeholder="Permission Request For" name="requestfor"th:value="${Permission.requestfor}"
+													required="true">
+											</div>
+										</div>
+
+										<div class="col">
+											<div class="form-group">
+												<label for="complainttype">Request Type</label> <input
+													type="text" class="form-control" id="requesttype"
+													aria-describedby="subjectHelp" placeholder="Request Type"
+													name="requesttype" th:value="${Permission.requesttype}"required="true" > 
+													
+											</div>
+										</div>
+
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="complaintto">Request To</label> <select
+													class="custom-select" name="requestto"th:value="${Permission.requestto}" id="requestto"
+													required="true">
+													<option selected>Select Police Department</option>
+
+													<option value="Rajapeth Police Station, Amt">Rajapeth
+														Police Station, Amt</option>
+													<option value="Achalpur Police Station">Achalpur
+														Police Station</option>
+													<option value="Anjangaon Police Station">Anjangaon
+														Police Station</option>
+												</select>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="subject">Location</label> <input type="text"
+													class="form-control" id="location"
+													aria-describedby="subjectHelp" placeholder="Enter Location"
+													name="location" th:value="${Permission.location}"required="true">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="exampleFormControlTextarea1">Description</label>
+										<textarea class="form-control" id="description" rows="3"
+											require="true" name="description"th:value="${Permission.description}"></textarea>
+									</div>
+									<button type="submit"
+										class="btn btn-primary btn-block w-50 mx-auto mt-3">
+										<i class="fa fa-check-square" aria-hidden="true"></i> Submit
+									</button>
+									
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
